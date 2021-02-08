@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\e2e",
+    "\\e2e\\src",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\seoservice",
+    "\\src\\app\\shared",
+    "\\src\\assets",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\src\\app\\seoservice\\search.service.ts",
+  "PreviewInSolutionExplorer": false
+}
