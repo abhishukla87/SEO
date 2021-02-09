@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SEOInfo.Factory;
 using SEOInfo.Model;
@@ -19,7 +20,7 @@ namespace SEOInfo.Controllers
 
         [Route("Search")]
         [HttpGet]
-        [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]
+        [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]      
         public async Task<ActionResult<DataModel>> Get(string keyword="e-statement", string searchEngine = "Google")
         {
             try

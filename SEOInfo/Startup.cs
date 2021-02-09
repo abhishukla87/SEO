@@ -21,7 +21,11 @@ namespace SEOInfo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddCors();
+
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                          .AllowAnyMethod()
+                                                           .AllowAnyHeader()));
+
             services.AddResponseCaching();
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -44,13 +48,10 @@ namespace SEOInfo
             }
             
             app.UseResponseCaching();
+
             app.UseRouting();
 
-            app.UseCors(x => x
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .SetIsOriginAllowed(origin => true)
-              .AllowCredentials()); 
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {

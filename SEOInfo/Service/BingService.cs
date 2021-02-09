@@ -17,14 +17,14 @@ namespace SEOInfo.Service
         {
             _appsettings = appsettings.Value;
         }
-        public async Task<DataModel> GetData(string searchCriteria)
+        public async Task<DataModel> GetData(string keyword)
         {
 
             using (var client = new HttpClient())
             {
                 var url = new Uri(string.Format(_appsettings.MockBingURL,
                                                  _appsettings.MockBingKey,
-                                                 searchCriteria,
+                                                  keyword,
                                                  _appsettings.NumberOFRecordsRead));
 
                 var response = await client.GetAsync(url);
@@ -37,7 +37,7 @@ namespace SEOInfo.Service
 
                 return new DataModel
                 {
-                    SearchResult = JsonConvert.DeserializeObject<List<SearchModel>>(json).FilterRecord(searchCriteria)
+                    SearchResult = JsonConvert.DeserializeObject<List<SearchModel>>(json).FilterRecord(_appsettings.TextComparison)
                 };
 
             }

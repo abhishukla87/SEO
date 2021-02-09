@@ -67,6 +67,8 @@ namespace SEOInfo.Test
         {
             var result = await _searchController.Get("e-statement", "Google");
             var okResult = result.Result as OkObjectResult;
+            Assert.IsNotNull(okResult.Value);
+            Assert.IsInstanceOf<DataModel>(okResult.Value);
             Assert.True(okResult.StatusCode == StatusCodes.Status200OK);
         }
 
@@ -75,6 +77,8 @@ namespace SEOInfo.Test
         {
             var result = await _searchController.Get("e-statement", "Bing");
             var okResult = result.Result as OkObjectResult;
+            Assert.IsNotNull(okResult.Value);
+            Assert.IsInstanceOf<DataModel>(okResult.Value);
             Assert.True(okResult.StatusCode == StatusCodes.Status200OK);
         }
 

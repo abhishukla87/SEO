@@ -5,6 +5,6 @@ namespace SEOInfo.Service
 {
     public interface ISearchService
     {
-        public Task<DataModel> GetData(string searchCritera);
+        public Task<DataModel> GetData(string keyword);
     }
 }

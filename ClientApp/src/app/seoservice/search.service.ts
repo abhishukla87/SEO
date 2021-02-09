@@ -20,10 +20,15 @@ export class SearchService {
 
     console.log(keyword);
     console.log(searchEngine);
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',    
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "*"
+    });
 
     const url = `${this.searchUrl}?Keyword=${keyword}&searchEngine=${searchEngine}`;
 
-    return this.http.get<Search>(url)
+    return this.http.get<Search>(url, { headers })
       .pipe(
         tap(data => console.log('searchResult: ' + JSON.stringify(data))),
         catchError(this.handleError)
